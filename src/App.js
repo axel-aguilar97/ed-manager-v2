@@ -18,10 +18,10 @@ export default function App() {
 
 			<div className="container">
 				<div className="row">
-					<div class="col-3">
+					<div className="col-3">
 						<Players />
 					</div>
-					<div class="col-9">
+					<div className="col-9">
 						<Team />
 					</div>
 				</div>

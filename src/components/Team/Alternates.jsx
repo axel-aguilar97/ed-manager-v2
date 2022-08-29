@@ -15,35 +15,6 @@ const DivAlternates = styled.div`
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-
-    &::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #fffafb;
-        border-radius: 6px;
-        box-shadow: inset 0 0 3px grey;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: #339989;
-        border-radius: 6px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: #7de2d1;
-    }
-
-    div {
-        margin-left: auto;
-        margin-right: auto;
-
-        p {
-            margin: 0;
-            font-size: 24px;
-        }
-    }
 `;
 
 const ArticleAlternate = styled.article`
@@ -122,9 +93,7 @@ const Alternates = ({alternates, removeAlternate}) => {
                         </ArticleAlternate>
                     ))
                 :
-                    <div>
-                        <p>No alterantes yet.</p>
-                    </div>
+                    <p className="m-0 fs-4 text-center">No alterantes yet.</p>
                 }
             </DivAlternates>
         </SectionAlternates>

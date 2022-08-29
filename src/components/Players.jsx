@@ -2,95 +2,58 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import defaultImage from '../assets/resources/default_photo.png';
 
 /* Styles */
-const SectionPlayers = styled.section`
-    margin-bottom: 20px;
-    padding: 8px;
-    border-radius: 6px;
-`;
-
 const DivPlayers = styled.div`
-    padding: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #fffafb;
-        border-radius: 6px;
-        box-shadow: inset 0 0 3px grey;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: #339989;
-        border-radius: 6px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: #7de2d1;
-    }
-
-    div {
-        margin-left: auto;
-        margin-right: auto;
-
-        p {
-            margin: 0;
-            font-size: 24px;
-        }
-    }
+    max-height: 678px;
+    overflow: auto;
 `;
 
 const ArticlePlayer = styled.article`
-    flex: 0 0 auto;
-    flex-direction: column;
-    width: auto;
-    max-width: 100%;
-    height: 100px;
-    margin: 4px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-
-    img {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 5px;
-        object-fit: cover;
-        border-radius: 100%;
+    button {
+        border: none;
+        border-radius: 6px;
     }
 `;
 
 /* Main */
 const Players = ({ players, addHeadline, addAlternate }) => {
     return (
-        <SectionPlayers className="container" style={{background: "#2b2c28"}}>
+        <section className="container p-2 rounded" style={{background: "#2b2c28"}}>
             <h2 className="d-flex justify-content-center">Players</h2>
             <DivPlayers>
                 {players.length > 0 ?
                     players.map(p => (
-                        <ArticlePlayer key={p.id}>
-                            <img src={((p.photo) ? p.photo : defaultImage)} alt={p.name} />
-                            <h3>{p.name}</h3>
-                            <div>
-                                <button onClick={() => addHeadline(p)}>Headline</button>
-                                <button onClick={() => addAlternate(p)}>Alternate</button>
+                        <ArticlePlayer key={p.id} className="d-flex justify-content-center align-items-center">
+                            <img src={((p.photo) ? p.photo : defaultImage)} alt={p.name} className="rounded-circle" style={{width: "56px", height: "56px"}} />
+                            
+                            <div className="ps-4 mt-3">
+                                <h3 className="fs-5">{p.name}</h3>
+
+                                <ul className="list-inline d-flex">
+                                    <li className="me-3">
+                                        <OverlayTrigger key={"bottom"} placement={"bottom"} overlay={<Tooltip id={"tooltip-top"}>Add player to Soccer field</Tooltip>}>
+                                            <button style={{width: "24px", height: "24px"}} onClick={() => addHeadline(p)}>H</button>
+                                        </OverlayTrigger>
+                                    </li>
+                                    <li className="me-3">
+                                        <OverlayTrigger key={"bottom"} placement={"bottom"} overlay={<Tooltip id={"tooltip-top"}>Add player such Alternate</Tooltip>}>
+                                            <button style={{width: "24px", height: "24px"}} onClick={() => addAlternate(p)}>A</button>
+                                        </OverlayTrigger>
+                                    </li>
+                                </ul>
                             </div>
                         </ArticlePlayer>
                     ))
                 :
-                    <div>
-                        <p>No players available.</p>
-                    </div>
+                    <p className="m-0 fs-4 text-center">No players available.</p>
                 }
             </DivPlayers>
-        </SectionPlayers>
+        </section>
     )
 };
 
