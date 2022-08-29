@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Players from './components/Players';
+import Team from './components/Team';
+
+/* Styles */
+const DivScreen = styled.div`
+	height: 100vh;
+    color: #fffafb !important;
+    background: #131515 !important;
+`;
+
+/* Main */
+export default function App() {
+	return (
+		<DivScreen>
+			<h1 className="p-3 d-flex justify-content-center">ED Manager</h1>
+
+			<div className="container">
+				<div className="row">
+					<div class="col-3">
+						<Players />
+					</div>
+					<div class="col-9">
+						<Team />
+					</div>
+				</div>
+			</div>
+		</DivScreen>
+	);
 }
-
-export default App;
