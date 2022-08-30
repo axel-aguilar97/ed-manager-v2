@@ -7,7 +7,7 @@ import defaultImage from "../../assets/resources/default_photo.png";
 // TODO: move styling to a separate file containing styles only
 const SectionAlternates = styled.section`
   padding: 8px;
-  background: #2b2c28;
+  background: #1d1f18;
   border-radius: 6px;
 `;
 
@@ -35,8 +35,8 @@ const ArticleAlternate = styled.article`
   }
 
   img {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     margin-bottom: 5px;
     object-fit: cover;
     border-radius: 100%;
@@ -51,7 +51,7 @@ const ArticleAlternate = styled.article`
     height: 1.15rem;
     top: -4px;
     right: -4px;
-    color: #000;
+    color: #444;
     background: #339989;
     border: none;
     border-radius: 6px;
