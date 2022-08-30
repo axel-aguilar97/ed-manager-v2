@@ -8,7 +8,7 @@ import defaultImage from "../../assets/resources/default_photo.png";
 const SectionAlternates = styled.section`
   padding: 8px;
   background: #2b2c28;
-  border-radius: 7px;
+  border-radius: 6px;
 `;
 
 const DivAlternates = styled.div`
