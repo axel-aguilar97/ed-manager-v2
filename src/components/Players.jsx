@@ -13,13 +13,6 @@ const DivPlayers = styled.div`
     overflow: auto;
 `;
 
-const ArticlePlayer = styled.article`
-    button {
-        border: none;
-        border-radius: 6px;
-    }
-`;
-
 /* Main */
 const Players = ({ players, addHeadline, addAlternate }) => {
     return (
@@ -28,7 +21,7 @@ const Players = ({ players, addHeadline, addAlternate }) => {
             <DivPlayers>
                 {players.length > 0 ?
                     players.map(p => (
-                        <ArticlePlayer key={p.id} className="d-flex justify-content-center align-items-center">
+                        <article key={p.id} className="d-flex justify-content-center align-items-center">
                             <img src={((p.photo) ? p.photo : defaultImage)} alt={p.name} className="rounded-circle" style={{width: "56px", height: "56px"}} />
                             
                             <div className="ps-4 mt-3">
@@ -37,17 +30,17 @@ const Players = ({ players, addHeadline, addAlternate }) => {
                                 <ul className="list-inline d-flex">
                                     <li className="me-3">
                                         <OverlayTrigger key={"bottom"} placement={"bottom"} overlay={<Tooltip id={"tooltip-top"}>Add player to Soccer field</Tooltip>}>
-                                            <button style={{width: "24px", height: "24px"}} onClick={() => addHeadline(p)}>H</button>
+                                            <button className="border-0 rounded" style={{width: "24px", height: "24px"}} onClick={() => addHeadline(p)}>H</button>
                                         </OverlayTrigger>
                                     </li>
                                     <li className="me-3">
                                         <OverlayTrigger key={"bottom"} placement={"bottom"} overlay={<Tooltip id={"tooltip-top"}>Add player such Alternate</Tooltip>}>
-                                            <button style={{width: "24px", height: "24px"}} onClick={() => addAlternate(p)}>A</button>
+                                            <button className="border-0 rounded" style={{width: "24px", height: "24px"}} onClick={() => addAlternate(p)}>A</button>
                                         </OverlayTrigger>
                                     </li>
                                 </ul>
                             </div>
-                        </ArticlePlayer>
+                        </article>
                     ))
                 :
                     <p className="m-0 fs-4 text-center">No players available.</p>

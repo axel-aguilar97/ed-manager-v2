@@ -7,7 +7,7 @@ import defaultImage from "../../assets/resources/default_photo.png";
 // TODO: move styling to a separate file containing styles only
 const SectionAlternates = styled.section`
   padding: 8px;
-  background: #1d1f18;
+  background: #2b2c28;
   border-radius: 6px;
 `;
 
@@ -79,39 +79,39 @@ const ArticleAlternate = styled.article`
 
 /* Main */
 const Alternates = ({ alternates, removeAlternate }) => {
-  return (
-    <SectionAlternates className="container">
-      <h2 className="d-flex justify-content-center">Alternates</h2>
-      <DivAlternates>
-        {alternates.length > 0 ? (
-          alternates.map((a) => (
-            <ArticleAlternate key={a.id}>
-              <div>
-                <img src={a.photo ? a.photo : defaultImage} alt={a.name} />
-                <button onClick={() => removeAlternate(a)}>X</button>
-              </div>
-              <p>{a.name}</p>
-            </ArticleAlternate>
-          ))
-        ) : (
-          <p className="m-0 fs-4 text-center">No alterantes yet.</p>
-        )}
-      </DivAlternates>
-    </SectionAlternates>
-  );
+	return (
+		<SectionAlternates className="container">
+			<h2 className="d-flex justify-content-center">Alternates</h2>
+			<DivAlternates>
+				{alternates.length > 0 ? (
+					alternates.map((a) => (
+						<ArticleAlternate key={a.id}>
+							<div>
+								<img src={a.photo ? a.photo : defaultImage} alt={a.name} />
+								<button onClick={() => removeAlternate(a)}>X</button>
+							</div>
+							<p>{a.name}</p>
+						</ArticleAlternate>
+					))
+				) : (
+					<p className="m-0 fs-4 text-center">No alterantes yet.</p>
+				)}
+			</DivAlternates>
+		</SectionAlternates>
+	);
 };
 
 const mapStateToProps = (state) => ({
-  alternates: state.alternates,
+	alternates: state.alternates,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  removeAlternate(player) {
-    dispatch({
-      type: "REMOVE_ALTERNATE",
-      player,
-    });
-  },
+	removeAlternate(player) {
+		dispatch({
+			type: "REMOVE_ALTERNATE",
+			player,
+		});
+	},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Alternates);
